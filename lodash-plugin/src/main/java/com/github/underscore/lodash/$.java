@@ -1218,6 +1218,95 @@ public class $<T> extends com.github.underscore.$<T> {
         return result + omission;
     }
 
+    /**
+     * Converts `value` to an object if it's not one.
+     *
+     * @private
+     * @param {*} value The value to process.
+     * @returns {Object} Returns the object.
+     */
+/*
+    function toObject(value) {
+      return isObject(value) ? value : Object(value);
+    }
+*/
+    /**
+     * The base implementation of `get` without support for string paths
+     * and default values.
+     *
+     * @private
+     * @param {Object} object The object to query.
+     * @param {Array} path The path of the property to get.
+     * @param {string} [pathKey] The key representation of path.
+     * @returns {*} Returns the resolved value.
+     */
+/*
+    function baseGet(object, path, pathKey) {
+      if (object == null) {
+        return;
+      }
+      if (pathKey !== undefined && pathKey in toObject(object)) {
+        path = [pathKey];
+      }
+      var index = 0,
+          length = path.length;
+
+      while (object != null && index < length) {
+        object = object[path[index++]];
+      }
+      return (index && index == length) ? object : undefined;
+    }
+*/
+    /**
+     * Converts `value` to property path array if it's not one.
+     *
+     * @private
+     * @param {*} value The value to process.
+     * @returns {Array} Returns the property path array.
+     */
+/*
+    function toPath(value) {
+      if (isArray(value)) {
+        return value;
+      }
+      var result = [];
+      baseToString(value).replace(rePropName, function(match, number, quote, string) {
+        result.push(quote ? string.replace(reEscapeChar, '$1') : (number || match));
+      });
+      return result;
+    }
+*/
+    /**
+     * Gets the property value at `path` of `object`. If the resolved value is
+     * `undefined` the `defaultValue` is used in its place.
+     *
+     * @static
+     * @memberOf _
+     * @category Object
+     * @param {Object} object The object to query.
+     * @param {Array|string} path The path of the property to get.
+     * @param {*} [defaultValue] The value returned if the resolved value is `undefined`.
+     * @returns {*} Returns the resolved value.
+     * @example
+     *
+     * var object = { 'a': [{ 'b': { 'c': 3 } }] };
+     *
+     * _.get(object, 'a[0].b.c');
+     * // => 3
+     *
+     * _.get(object, ['a', '0', 'b', 'c']);
+     * // => 3
+     *
+     * _.get(object, 'a.b.c', 'default');
+     * // => 'default'
+     */
+/*
+    function get(object, path, defaultValue) {
+      var result = object == null ? undefined : baseGet(object, toPath(path), (path + ''));
+      return result === undefined ? defaultValue : result;
+    }
+*/
+
     public static class JsonStringBuilder {
         private final StringBuilder builder;
         private int ident;
