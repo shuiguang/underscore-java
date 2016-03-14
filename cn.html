@@ -1,0 +1,1479 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Underscore-java</title>
+
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width">
+	<style>
+		body {
+		  font-size: 14px;
+		  line-height: 22px;
+		  background: #f4f4f4;
+		  color: #000;
+		  font-family: Helvetica Neue, Helvetica, Arial;
+		}
+		.interface {
+		  font-family: "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, sans-serif !important;
+		}
+		div#sidebar {
+		  background: #fff;
+		  position: fixed;
+		  top: 0; left: 0; bottom: 0;
+		  width: 200px;
+		  overflow-y: auto;
+		  overflow-x: hidden;
+		  -webkit-overflow-scrolling: touch;
+		  padding: 15px 0 30px 30px;
+		  border-right: 1px solid #bbb;
+		  box-shadow: 0 0 20px #ccc; -webkit-box-shadow: 0 0 20px #ccc; -moz-box-shadow: 0 0 20px #ccc;
+		}
+		a.toc_title, a.toc_title:visited {
+		  display: block;
+		  color: black;
+		  font-weight: bold;
+		  margin-top: 15px;
+		}
+		  a.toc_title:hover {
+			text-decoration: underline;
+		  }
+		  #sidebar .version {
+			font-size: 10px;
+			font-weight: normal;
+		  }
+		ul.toc_section {
+		  font-size: 11px;
+		  line-height: 14px;
+		  margin: 5px 0 0 0;
+		  padding-left: 0px;
+		  list-style-type: none;
+		  font-family: Lucida Grande;
+		}
+		  .toc_section li {
+			cursor: pointer;
+			margin: 0 0 3px 0;
+		  }
+			.toc_section li a {
+			  text-decoration: none;
+			  color: black;
+			}
+			  .toc_section li a:hover {
+				text-decoration: underline;
+			  }
+		div.container {
+		  width: 600px;
+		  margin: 20px 0 50px 260px;
+		}
+		img#logo {
+		  width: 396px;
+		  height: 69px;
+		}
+		div.warning {
+		  margin-top: 15px;
+		  font: bold 11px Arial;
+		  color: #770000;
+		}
+		p {
+		  margin: 20px 0;
+		  width: 550px;
+		}
+		a, a:visited {
+		  color: #444;
+		}
+		a:active, a:hover {
+		  color: #000;
+		}
+		h1, h2, h3, h4, h5, h6 {
+		  padding-top: 20px;
+		}
+		  h2 {
+			font-size: 20px;
+		  }
+		b.header {
+		  font-size: 16px;
+		  line-height: 30px;
+		}
+		span.alias {
+		  font-size: 14px;
+		  font-style: italic;
+		  margin-left: 20px;
+		}
+		table, tr, td {
+		  margin: 0; padding: 0;
+		}
+		  td {
+			padding: 2px 12px 2px 0;
+		  }
+		ul {
+		  list-style-type: circle;
+		  padding: 0 0 0 20px;
+		}
+		  li {
+			width: 500px;
+			margin-bottom: 10px;
+		  }
+		  code, pre, tt {
+			font-family: Monaco, Consolas, "Lucida Console", monospace;
+			font-size: 12px;
+			line-height: 18px;
+			font-style: normal;
+		  }
+			tt {
+			  padding: 0px 3px;
+			  background: #fff;
+			  border: 1px solid #ddd;
+			  zoom: 1;
+			}
+			code {
+			  margin-left: 20px;
+			}
+			pre {
+			  font-size: 12px;
+			  padding: 2px 0 2px 15px;
+			  border-left: 5px solid #bbb;
+			  margin: 0px 0 30px;
+			}
+		@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+			  only screen and (-o-min-device-pixel-ratio: 3/2),
+			  only screen and (min-device-pixel-ratio: 1.5) {
+		  img {
+			max-width: 100%;
+		  }
+		  div#sidebar {
+			-webkit-overflow-scrolling: initial;
+			position: relative;
+			width: 90%;
+			left: 0;
+			top: -7px;
+			padding: 10px 0 10px 30px;
+			border: 0;
+		  }
+		  img#logo {
+			width: auto;
+			height: auto;
+		  }
+		  div.container {
+			margin: 0;
+			width: 100%;
+		  }
+		  p, div.container ul {
+			max-width: 98%;
+			overflow-x: scroll;
+		  }
+		  pre {
+			overflow: scroll;
+		  }
+		}
+	</style>
+</head>
+<body>
+    <div id="sidebar" class="interface">
+        <a class="toc_title" href="#">
+            Underscore-java <span class="version">(1.12)</span>
+        </a>
+        <a class="toc_title" href="#">
+            介绍(Introduction)
+        </a>
+
+            <a class="toc_title" href="#Collections">
+                集合(Collections)
+            </a>
+
+            <ul class="toc_section">
+                <li>- <a href="#each">each</a></li><li>- <a
+                href="#map">map</a></li><li>- <a
+                href="#reduce">reduce</a></li><li>- <a
+                href="#reduceRight">reduceRight</a></li><li>- <a
+                href="#find">find</a></li><li>- <a
+                href="#filter">filter</a></li><li>- <a
+                href="#where">where</a></li><li>- <a
+                href="#findWhere">findWhere</a></li><li>- <a
+                href="#reject">reject</a></li><li>- <a
+                href="#all">all</a></li><li>- <a href="#any">any</a></li><li>-
+                <a href="#include">include</a></li><li>- <a
+                href="#invoke">invoke</a></li><li>- <a
+                href="#pluck">pluck</a></li><li>- <a
+                href="#max">max</a></li><li>- <a href="#min">min</a></li><li>-
+                <a href="#sortBy">sortBy</a></li><li>- <a
+                href="#groupBy">groupBy</a></li><li>- <a
+                href="#countBy">countBy</a></li><li>- <a
+                href="#sortedIndex">sortedIndex</a></li><li>- <a
+                href="#shuffle">shuffle</a></li><li>- <a
+                href="#sample">sample</a></li><li>- <a
+                href="#toArray">toArray</a></li><li>- <a
+                href="#toMap">toMap</a></li><li>- <a href="#size">size</a></li>
+             </ul>
+
+            <a class="toc_title" href="#Arrays">
+                数组(Arrays)
+            </a>
+
+            <ul class="toc_section">
+                <li>- <a href="#first">first</a></li><li>- <a
+                href="#initial">initial</a></li><li>- <a
+                href="#last">last</a></li><li>- <a
+                href="#rest">rest</a></li><li>- <a
+                href="#compact">compact</a></li><li>- <a
+                href="#flatten">flatten</a></li><li>- <a
+                href="#without">without</a></li><li>- <a
+                href="#union">union</a></li><li>- <a
+                href="#intersection">intersection</a></li><li>- <a
+                href="#difference">difference</a></li><li>- <a
+                href="#uniq">uniq</a></li><li>- <a href="#zip">zip</a></li><li>-
+                <a href="#object">object</a></li><li>- <a
+                href="#indexOf">indexOf</a></li><li>- <a
+                href="#lastIndexOf">lastIndexOf</a></li><li>- <a
+                href="#range">range</a></li><li>- <a
+                href="#concat">concat</a></li><li>- <a
+                href="#reverse">reverse</a></li><li>- <a
+                href="#join">join</a></li><li>- <a
+                href="#slice">slice</a></li>
+             </ul>
+
+            <a class="toc_title" href="#Functions">
+                函数(Functions)
+            </a>
+
+            <ul class="toc_section">
+                <li>- <a href="#bind">bind</a></li><li>- <a
+                href="#memoize">memoize</a></li><li>- <a
+                href="#delay">delay</a></li><li>- <a
+                href="#once">once</a></li><li>- <a
+                href="#debounce">debounce</a></li><li>- <a
+                href="#after">after</a></li><li>- <a
+                href="#before">before</a></li><li>- <a
+                href="#wrap">wrap</a></li><li>- <a
+                href="#compose">compose</a></li>
+             </ul>
+
+            <a class="toc_title" href="#Objects">
+                对象(Objects)
+            </a>
+
+            <ul class="toc_section">
+                <li>- <a href="#keys">keys</a></li><li>- <a
+                href="#values">values</a></li><li>- <a
+                href="#pairs">pairs</a></li><li>- <a
+                href="#invert">invert</a></li><li>- <a
+                href="#functions">functions</a></li><li>- <a
+                href="#extend">extend</a></li><li>- <a
+                href="#pick">pick</a></li><li>- <a
+                href="#omit">omit</a></li><li>- <a
+                href="#defaults">defaults</a></li><li>- <a
+                href="#clone">clone</a></li><li>- <a
+                href="#has">has</a></li><li>- <a
+                href="#isEqual">isEqual</a></li><li>- <a
+                href="#isEmpty">isEmpty</a></li><li>- <a
+                href="#isArray">isArray</a></li><li>- <a
+                href="#isObject">isObject</a></li><li>- <a
+                href="#isFunction">isFunction</a></li><li>- <a
+                href="#isString">isString</a></li><li>- <a
+                href="#isNumber">isNumber</a></li><li>- <a
+                href="#isBoolean">isBoolean</a></li><li>- <a
+                href="#isDate">isDate</a></li>
+             </ul>
+
+            <a class="toc_title" href="#Utilities">
+				功能(Utilities)
+            </a>
+
+            <ul class="toc_section">
+                <li>- <a href="#times">times</a></li><li>- <a
+                href="#random">random</a></li><li>- <a
+                href="#mixin">mixin</a></li><li>- <a
+                href="#uniqueId">uniqueId</a></li><li>- <a
+                href="#uniquePassword">uniquePassword</a></li><li>- <a
+                href="#escape">escape</a></li><li>- <a
+                href="#result">result</a></li>
+             </ul>
+
+            <a class="toc_title" href="#Chaining">
+                链式结构(Chaining)
+            </a>
+
+            <ul class="toc_section">
+                <li>- <a href="#chain">chain</a></li><li>- <a
+                href="#value">value</a></li>
+             </ul>
+
+        <a class="toc_title" href="#changelog">
+            更新日志(Change Log)
+        </a>
+    </div>
+    <div class="container">
+        <h1>Underscore-java</h1>
+        <p id="Introduction">
+            Underscore-java 是 <a href="http://underscorejs.org/">Underscore.js</a> 的java移植版.
+			这是一个使用库提供了类似prototype.js中的函数功能，Underscore-java提供了大量函数，包括像map，select，invoke等非常规的函数。
+			同样也提供了专业的视图：函数绑定，排序，深度相等测试等等。这个类可以用来代替内建函数。Underscore-java目前兼容Java 6及后续版本。该项目目前<a href="http://github.com/javadev/underscore-java">已托管在GitHub</a>，欢迎贡献源代码。
+		</p>
+		<p>
+			<a href="http://shuiguang.github.io/underscore-java/">underscore-java中文手册</a>
+		</p>
+        <h2>下载</h2>
+        <div><a href="https://github.com/javadev/underscore-java/archive/v1.12.zip">Version 1.12</a> - <i>~2.3Mb, 包括所有的开发文件</i></div>
+        <h2>导包</h2>
+		<div>
+			<pre>import static java.util.Arrays.asList;
+import com.github.underscore.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;</pre>
+		</div>
+		<h2 id="Collections">集合函数 (数组, 结构体, 查询, 或 对象)</h2>
+		
+<p id="each"><b class="header">each</b> <code>$.each(collection, iterator)</code><br>
+each函数的第一个参数集合数组，第二个参数是迭代器提供遍历集合数组中的元素。该跌代器受限于上下文（组件或结构），集合中每个元素都会被作为参数传入到跌代器中并被调用。
+例如：
+ argument: (element).<br></p><pre>$.each(asList(1, 2, 3), new Block&lt;Integer&gt;() {
+    public void apply(Integer item) {
+        System.out.print(item + &quot;,&quot;);
+    }
+});
+// 1,2,3,
+
+$.each(asList(1, 2, 3), new Block&lt;Integer&gt;() {
+	// 计数器定义到匿名内部类的成员属性位置，其他方式全部失败
+	int multiplier = 2;
+	int index = 0;
+    public void apply(Integer item) {
+        System.out.println(index + &quot;=&quot; + (item * multiplier) + &quot;,&quot;);
+        index += 1;
+    }
+});
+// 0=2,1=4,2=6,</pre><p></p>
+
+<p id="map"><b class="header">map</b> <code>$.map(collection, iterator)</code><br>
+通过转换函数(iterator跌代器)映射列表中每个值产生价值的新数组并return。
+<br></p><pre>List&lt;Integer&gt; list = $.map(asList(1, 2, 3), new Function1&lt;Integer, Integer&gt;() {
+    public Integer apply(Integer item) {
+        return item * 3;
+    }
+});
+System.out.println(list);
+// [3, 6, 9]
+
+Set&lt;Integer&gt; result = $.map(new LinkedHashMap&lt;Integer, String&gt;() {{ put(1, &quot;one&quot;); put(2, &quot;two&quot;); put(3, &quot;three&quot;); }}
+    .entrySet(),
+    new Function1&lt;Map.Entry&lt;Integer, String&gt;, Integer&gt;() {
+    public Integer apply(Map.Entry&lt;Integer, String&gt; item) {
+        return item.getKey() * 3;
+    }
+});
+System.out.println(result);
+// [3, 6, 9]</pre><p></p>
+
+<p id="reduce"><b class="header">reduce</b> <code>$.reduce(collection, iterator,
+memo)</code><br>
+把collection中元素归结为一个单独的数值。Memo是reduce函数的初始值，reduce的每一步都需要由iterator返回
+<br></p><pre>Integer result = $.reduce(asList(1, 2, 3),
+    new FunctionAccum&lt;Integer, Integer&gt;() {
+    public Integer apply(Integer item1, Integer item2) {
+        return item1 + item2;
+    }
+    },
+    0
+);
+System.out.println(result);
+// 6</pre><p></p>
+
+<p id="reduceRight"><b class="header">reduceRight</b>
+<code>$.reduceRight(collection, iterator, memo)</code><br>是从右侧开始组合的元素的reduce函数。<br></p><pre>List&lt;Integer&gt; result = $.reduceRight(asList(asList(0, 1), asList(2, 3), asList(4, 5)),
+    new FunctionAccum&lt;List&lt;Integer&gt;, List&lt;Integer&gt;&gt;() {
+		public List&lt;Integer&gt; apply(List&lt;Integer&gt; item1, List&lt;Integer&gt; item2) {
+			List&lt;Integer&gt; list = new ArrayList&lt;Integer&gt;(item1);
+			list.addAll(item2);
+			return list;
+		}
+	},
+	Collections.&lt;Integer&gt;emptyList()
+);
+System.out.println(result);
+// [4, 5, 2, 3, 0, 1]</pre><p></p>
+
+ <p id="find"><b class="header">find</b> <code>$.find(collection,
+iterator)</code><br>
+遍历集合，逐项查找，立即返回第一个通过真值检测的元素值，不会遍历整个集合。
+<br></p><pre>Integer result = $.find(asList(1, 2, 3, 4, 5, 6),
+    new Predicate&lt;Integer&gt;() {
+    public Boolean apply(Integer item) {
+        return item % 2 == 0;
+    }
+}).get();
+System.out.println(result);
+// 2</pre><p></p>
+
+<p id="filter"><b class="header">filter</b> <code>$.filter(collection, iterator)
+</code><br>遍历集合，返回包含所有通过真值检测的元素集合<br></p><pre>
+List&lt;Integer&gt; result = $.filter(asList(1, 2, 3, 4, 5, 6),
+    new Predicate&lt;Integer&gt;() {
+    public Boolean apply(Integer item) {
+        return item % 2 == 0;
+    }
+});
+System.out.println(result);
+// [2, 4, 6]</pre><p></p>
+
+<p id="where"><b class="header">where</b> <code>$.where(list, properties)
+</code><br>遍历集合，返回包含指定键值对的集合数组。
+<br></p><pre>class Book {
+    public final String title;
+    public final String author;
+    public final Integer year;
+    public Book(final String title, final String author, final Integer year) {
+        this.title = title;
+        this.author = author;
+        this.year = year;
+    }
+    public String toString() {
+        return &quot;title: &quot; + title + &quot;, author: &quot; + author + &quot;, year: &quot; + year;
+    }
+}
+List&lt;Book&gt; listOfPlays =
+    new ArrayList&lt;Book&gt;() { {
+      add(new Book(&quot;Cymbeline2&quot;, &quot;Shakespeare&quot;, 1614));
+      add(new Book(&quot;Cymbeline&quot;, &quot;Shakespeare&quot;, 1611));
+      add(new Book(&quot;The Tempest&quot;, &quot;Shakespeare&quot;, 1611));
+    } };
+List&lt;Book&gt; result = $.where(listOfPlays, asList(
+            Tuple.&lt;String, Object&gt;create(&quot;author&quot;, &quot;Shakespeare&quot;),
+            Tuple.&lt;String, Object&gt;create(&quot;year&quot;, Integer.valueOf(1611))));
+System.out.println(result);
+// [title: Cymbeline, author: Shakespeare, year: 1611,title: The Tempest, author: Shakespeare, year: 1611]</pre><p></p>
+
+<p id="findWhere"><b class="header">findWhere</b> <code>$.findWhere(collection, properties)</code>
+<br>遍历集合，返回集合中第一个包含指定键值对的元素，使用get()获取。<br></p><pre>class Book {
+    public final String title;
+    public final String author;
+    public final Integer year;
+    public Book(final String title, final String author, final Integer year) {
+        this.title = title;
+        this.author = author;
+        this.year = year;
+    }
+    public String toString() {
+        return &quot;title: &quot; + title + &quot;, author: &quot; + author + &quot;, year: &quot; + year;
+    }
+}
+List&lt;Book&gt; listOfPlays =
+    new ArrayList&lt;Book&gt;() { {
+      add(new Book(&quot;Cymbeline2&quot;, &quot;Shakespeare&quot;, 1614));
+      add(new Book(&quot;Cymbeline&quot;, &quot;Shakespeare&quot;, 1611));
+      add(new Book(&quot;The Tempest&quot;, &quot;Shakespeare&quot;, 1611));
+    } };
+Book result = $.findWhere(listOfPlays, asList(
+    Tuple.&lt;String, Object&gt;create(&quot;author&quot;, &quot;Shakespeare&quot;),
+    Tuple.&lt;String, Object&gt;create(&quot;year&quot;, Integer.valueOf(1611)))).get();
+System.out.println(result);
+// &quot;title: Cymbeline, author: Shakespeare, year: 1611&quot;
+</pre><p></p>
+
+<p id="reject"><b class="header">reject</b> <code>$.reject(collection, iterator)
+</code><br>返回集合中没有通过真值检测的元素集合，与filter相反<br></p><pre>
+List&lt;Integer&gt; result = $.reject(asList(1, 2, 3, 4),
+    new Predicate&lt;Integer&gt;() {
+    public Boolean apply(Integer item) {
+        return item % 2 == 0;
+    }
+});
+System.out.println(result);
+// [1, 3]</pre><p></p>
+
+<p id="all"><b class="header">all</b> <code>$.all(collection, iterator)
+</code><br>如果集合中的所有元素都通过的真值检测就返回true。<br></p><pre>
+boolean flag = $.all(asList(1, 2, 3, 4),
+    new Predicate&lt;Integer&gt;() {
+        public Boolean apply(Integer item) {
+            return item % 2 == 0;
+        }
+    });
+System.out.println(flag);
+// false
+boolean result = $.all(asList(1, 2, 3, 4),
+    new Predicate&lt;Integer&gt;() {
+        public Boolean apply(Integer item) {
+            return item < 5;
+        }
+    });
+System.out.println(result);
+// true</pre><p></p>
+
+<p id="any"><b class="header">any</b> <code>$.any(collection, iterator)</code><br>如果集合有任何一个元素通过的真值检测就返回true。该方法不会遍历整个集合。<br>
+</p><pre>boolean flag = $.any(asList(1, 2, 3, 4),
+    new Predicate&lt;Integer&gt;() {
+        public Boolean apply(Integer item) {
+            return item % 2 == 0;
+        }
+    });
+System.out.println(flag);
+// true
+boolean result = $.any(asList(1, 2, 3, 4),
+    new Predicate&lt;Integer&gt;() {
+        public Boolean apply(Integer item) {
+            return item == 5;
+        }
+    });
+System.out.println(result);
+// false</pre><p></p>
+
+<p id="include"><b class="header">include</b> <code>$.include(collection, value)
+</code><br>如果集合包含指定的value则返回true，如果是字符串也会判断
+<br></p><pre>boolean result = $.include(asList(1, 2, 3), 3); // true
+System.out.println(result);</pre><p></p>
+
+<p id="invoke"><b class="header">invoke</b> <code>$.invoke(collection,
+methodName, [arguments])</code><br>在集合的每个元素上执行methodName方法并返回执行完methodName后的集合副本（作为参数的集合不会发生改变）。
+<br></p><pre>
+List<String> test = asList(" foo", " bar ");
+List<String> result = $.invoke(test, "trim");
+System.out.println(test);   //[ foo,  bar ]
+System.out.println(result); //[foo, bar]
+</pre><p></p>
+
+<p id="pluck"><b class="header">pluck</b> <code>$.pluck(collection,
+propertyName)</code><br>
+萃取数组对象中某属性值，返回一个包括这些属性值的集合。
+注：Person如果是私有内部类，不允许外边访问。可能会报can not access a member of class
+解决：将Person类保存到单独文件中并设置为public class Person
+问题：作者是如何解决的就不得而知了，不过可以通过设置public内部类访问方式实现
+<br></p><pre>// 需要定义在成员位置的内部类
+public static  class Person {
+    public final String name;
+    public final Integer age;
+    public Person(final String name, final Integer age) {
+        this.name = name;
+        this.age = age;
+    }
+};
+List&lt;Object&gt; result = $.pluck(asList(new Person(&quot;moe&quot;, 40), new Person(&quot;larry&quot;, 50), new Person(&quot;curly&quot;, 40)), &quot;name&quot;);
+System.out.println(result);
+// [moe, larry, curly]</pre><p></p>
+
+<p id="max"><b class="header">max</b> <code>$.max(collection, [iterator])</code><br>
+返回集合中的最大值。如果传递iterator参数，iterator将作为集合中每个元素的排序依据
+如果有iterator仍然返回原始集合中的值
+<br></p><pre>Integer result = $.max(asList(10, 5, 100, 2, 1000));
+System.out.println(result);
+// 1000
+result = $.max(asList(10, 5, 100, 2, 1000),
+        new Function1&lt;Integer, Integer&gt;() {
+    public Integer apply(Integer item) {
+        return -item;
+    }
+});
+System.out.println(result);
+// 2
+</pre><p></p>
+
+ <p id="min"><b class="header">min</b> <code>$.min(collection, [iterator])</code><br>
+ 返回集合中的最小值。如果传递iterator参数，iterator将作为集合中每个元素的排序依据
+ 如果有iterator仍然返回原始集合中的值
+ <br></p><pre>
+int min = $.min(asList(10, 5, 100, 2, 1000));
+System.out.println(min);
+// 2
+int result = $.min(asList(10, 5, 100, 2, 1000),
+        new Function1&lt;Integer, Integer&gt;() {
+    public Integer apply(Integer item) {
+        return -item;
+    }
+});
+System.out.println(result);
+// 1000
+</pre><p></p>
+
+<p id="sortBy"><b class="header">sortBy</b> <code>$.sortBy(collection,
+iterator)</code><br>Returns
+返回一个排序后的集合拷贝副本。如果传递iterator参数，iterator将作为集合中每个元素的排序依据
+<br></p><pre>List&lt;Integer&gt;test = asList(1, 2, 3, 4, 5, 6);
+List&lt;Integer&gt; result = $.sortBy(test,
+        new Function1&lt;Integer, Integer&gt;() {
+        public Integer apply(Integer item) {
+            return Double.valueOf(Math.sin(item) * 1000).intValue();
+        }
+    });
+System.out.println(test);
+System.out.println(result);
+	<br>=&gt; [5, 4, 6, 3, 1, 2]</pre><p></p>
+
+<p id="groupBy"><b class="header">groupBy</b> <code>$.groupBy(collection,
+iterator)</code><br>
+把一个集合分组为多个集合，通过 iterator 返回的结果进行分组. 如果 iterator 是一个字符串而不是函数, 那么将使用 iterator 作为各元素的属性名来对比进行分组。
+<br></p><pre>List&lt;Double&gt;test = asList(1.3, 2.1, 2.4);
+Map&lt;Double, List&lt;Double&gt;&gt; result = $.groupBy(test,
+        new Function1&lt;Double, Double&gt;() {
+        public Double apply(Double num) {
+            return Math.floor(num);
+        }
+    });
+System.out.println(test);
+System.out.println(result);
+<br>=&gt; {1.0=[1.3], 2.0=[2.1, 2.4]}</pre><p></p>
+
+<p id="countBy"><b class="header">countBy</b> <code>$.countBy(collection,
+iterator)</code><br>和groupBy一样把一个集合分组为多个集合，把一个集合分组为多个集合，但是返回的并不是元素的集合数据而是每个集合的元素个数。
+<br></p><pre>class Person {
+    public final String name;
+    public final Integer age;
+    public Person(final String name, final Integer age) {
+        this.name = name;
+        this.age = age;
+    }
+    public String toString() {
+        return name + &quot;, &quot; + age;
+    }
+}
+final Map&lt;String, Integer&gt; result =
+$.countBy(asList(new Person(&quot;moe&quot;, 40), new Person(&quot;moe&quot;, 50), new Person(&quot;curly&quot;, 60)),
+    new Function1&lt;Person, String&gt;() {
+    public String apply(Person person) {
+        return person.name;
+    }
+});
+System.out.println(result);
+<br>=&gt; {moe=2, curly=1}</pre><p></p>
+
+<p id="sortedIndex"><b class="header">sortedIndex</b>
+<code>$.sortedIndex(collection, value, [iterator])</code><br>
+返回value插入一个有序集合中的索引位置。如果提供了 iterator 跌代器参数，将会计算出集合中各个元素的值再插入。
+<br></p><pre>int result = $.sortedIndex(asList(10, 20, 30, 40, 50), 35);
+System.out.println(result);
+<br>=&gt; 3</pre><p></p>
+
+<p id="shuffle"><b class="header">shuffle</b> <code>$.shuffle(array)
+</code><br>返回一个打乱顺序后的集合拷贝副本
+<br></p><pre>List&lt;Integer&gt; test = asList(1, 2, 3, 4, 5, 6);
+List&lt;Integer&gt; result = $.shuffle(test);
+System.out.println(test);	// [1, 2, 3, 4, 5, 6]
+System.out.println(result);<br>=&gt; [4, 1, 6, 3, 5, 2]</pre><p></p>
+
+<p id="sample"><b class="header">sample</b> <code>$.sample(list, [n])
+</code><br>从集合中产生一个随机数，如果提供n作为第二个参数则返回n个随机数组成的集合
+<br></p><pre>
+Integer single = $.sample(asList(1, 2, 3, 4, 5, 6));
+Set&lt;Integer&gt; result = $.sample(asList(1, 2, 3, 4, 5, 6), 3);
+System.out.println(single);    // 4
+System.out.println(result);    // [3, 2, 5]
+</pre><p></p>
+
+<p id="toArray"><b class="header">toArray</b> <code>$.toArray(collection)
+</code><br>把集合转换成一个数组<br>
+</p><pre>// 不知道怎样接收toArray的返回值
+System.out.println($.&lt;Integer&gt;toArray(asList(1, 2, 3, 4)));<br>=&gt; [1, 2, 3, 4]</pre><p></p>
+
+<p id="toMap"><b class="header">toMap</b> <code>$.toMap(collection)</code><br>把集合转换成一个map对象<br></p><pre>
+Map&lt;String, String&gt; result = $.toMap((new LinkedHashMap&lt;String, String&gt;() { {
+	put("name1", "one");
+	put("name2", "two");
+} }).entrySet());
+System.out.println(result);
+<br>=&gt; {name1=one, name2=two}</pre><p></p>
+
+<p id="size"><b class="header">size</b> <code>$.size(collection)
+</code><br>返回集合的长度
+<br></p><pre>int size = $.size(asList(1, 2, 3, 4));
+System.out.println(size);<br>=&gt; 4</pre><p></p>
+ <h2 id="Arrays">集合数组 函数</h2>
+
+<p id="first"><b class="header">first</b> <code>$.first(array, [n])
+</code><br>返回一个数组的第一个元素，如果提供第二个参数n则返回前n个元素组成的集合
+<br></p><pre>
+Integer first = $.first(asList(5, 4, 3, 2, 1));
+System.out.println(first);    // 5
+List&lt;Integer&gt; result = $.first(asList(5, 4, 3, 2, 1), 3);   // [5, 4, 3]
+System.out.println(result);
+</pre><p></p>
+
+<p id="initial"><b class="header">initial</b> <code>$.initial(array, [n])
+</code><br>返回数组中除了最后一个元素外的其他全部元素，在arguments对象上特别有用。传递 n 参数将排除数组后面的 n 个元素。<br></p>
+<pre>
+List&lt;Integer&gt; result = $.initial(asList(5, 4, 3, 2, 1));
+System.out.println(result);<br>=&gt; [5, 4, 3, 2]</pre><p></p>
+
+<p id="last"><b class="header">last</b> <code>$.last(array, [n])
+</code><br>返回数组中除了最后一个元素外的其他全部元素，在arguments对象上特别有用。传递 n 参数将排除数组后面的 n 个元素
+<br></p>
+<pre>List&lt;Integer&gt; other = $.initial(asList(5, 4, 3, 2, 1));
+List&lt;Integer&gt; result = $.initial(asList(5, 4, 3, 2, 1), 2);
+System.out.println(other);	//[5, 4, 3, 2]
+System.out.println(result);	//[5, 4, 3]</pre><p></p>
+
+<p id="rest"><b class="header">rest</b> <code>$.rest(array, [index])
+</code><br>返回数组中除了第一个元素外的其他全部元素。传递 index 参数将返回从index开始的剩余所有元素。在转换 arguments 对象时非常有用。<br></p>
+<pre>
+List&lt;Integer&gt; rest = $.rest(asList(5, 4, 3, 2, 1));
+List&lt;Integer&gt; result = $.rest(asList(5, 4, 3, 2, 1), 2);
+System.out.println(rest);		//[5, 4, 3, 2, 1]
+System.out.println(result);		//[3, 2, 1]
+</pre><p></p>
+
+<p id="compact"><b class="header">compact</b> <code>$.compact(array)
+</code><br>返回一个除去所有false值的array副本。 在本函数中, false, 0, "" 是false值.
+<br></p>
+<pre>List&lt;? extends Object> result = $.compact(asList(0, 1, false, 2, "", 3));
+System.out.println(result);
+<br>=&gt; [1, 2, 3]</pre><p></p>
+
+<p id="flatten"><b class="header">flatten</b> <code>$.flatten(array, [shallow])
+</code><br>将一个嵌套多层的数组(嵌套可以是任何层数)转换为只有一层的数组。 如果你传递第二个true参数，数组将只减少一维的嵌套。
+<br></p>
+<pre>
+List&lt;Object&gt; single = $.flatten(asList(1, asList(2, asList(3, asList(asList(4))))));
+List&lt;Object&gt; result = $.flatten(asList(1, asList(2, asList(3, asList(asList(4))))), true);
+System.out.println(single);   // [1, 2, 3, 4]
+System.out.println(result);   // [1, 2, [3, [[4]]]]
+</pre><p></p>
+
+<p id="without"><b class="header">without</b> <code>$.without(array, [values])
+</code><br>返回一个删除所有values值后的 array副本。
+<br></p><pre>
+List&lt;Integer&gt; result = $.without(asList(1, 2, 1, 0, 3, 1, 4), 0, 1);
+System.out.println(result);   // [2, 3, 4]
+</pre><p></p>
+
+<p id="union"><b class="header">union</b> <code>$.union(*arrays)
+</code><br>返回1个或多个数组合并的结果。<br></p><pre>
+List&lt;Integer&gt; result = $.union(asList(1, 2, 3), asList(101, 2, 1, 10), asList(2, 1));
+System.out.println(result);   //[1, 2, 3, 101, 10]</pre><p></p>
+
+<p id="intersection"><b class="header">intersection</b>
+<code>$.intersection(*arrays)</code><br>返回所有参数数组的交集组成的数组，结果中每个值存在于传入的每个数组里。<br></p>
+<pre>
+List&lt;Integer&gt; result = $.intersection(asList(1, 2, 3), asList(101, 2, 1, 10), asList(2, 1));
+System.out.println(result);   // [1, 2]
+</pre><p></p>
+
+<p id="difference"><b class="header">difference</b> <code>$.difference(array, others)</code>
+<br>类似without，返回存在于array且不存在与others中的元素。<br></p>
+<pre>
+List&lt;Integer&gt; result = $.difference(asList(1, 2, 3, 4, 5), asList(5, 2, 10));
+System.out.println(result);   // [1, 3, 4]
+</pre><p></p>
+
+<p id="uniq"><b class="header">uniq</b> <code>$.uniq(array, [iterator])</code>
+<br>返回 array去重后的副本。你可以传递 iterator 函数来计算该元素的唯一属性作为比对标准。
+<br></p>
+<pre>
+List&lt;Integer&gt; unique = $.uniq(asList(1, 2, 1, 3, 1, 4));
+System.out.println(unique);   // [1, 2, 3, 4]
+Collection&lt;Integer&gt; result = $.uniq(asList(1, 2, 1, 3, 1, 4), new Function1&lt;Integer, Integer&gt;() {
+	public Integer apply(Integer item) {
+		return item % 2;
+	}
+});
+System.out.println(result);   // [1, 4]
+</pre><p></p>
+
+<p id="zip"><b class="header">zip</b> <code>$.zip(*arrays)
+</code><br>
+将数组按照比例进行打包后返回大数组。
+<br></p>
+<pre>
+List&lt;List&lt;String&gt;&gt; result = $.zip(asList("moe", "larry", "curly"), asList("30", "40", "50"), asList("true", "false", "false"));
+System.out.println(result); // [[moe, 30, true], [larry, 40, false], [curly, 50, false]]
+</pre><p></p>
+
+<p id="object"><b class="header">object</b> <code>$.object(array, [values])</code>
+<br>将数组转换为对象，可以传递一个包含有键值对的参数，也可以传递分别包含有键和值的参数<br></p>
+<pre>$.object(asList("moe", "larry", "curly"), asList("30", "40", "50"));
+<br>=&gt; [(moe, 30), (larry, 40), (curly, 50)]</pre><p></p>
+
+<p id="indexOf"><b class="header">indexOf</b> 
+<code>$.indexOf(array, value)</code><br>返回value在array中第一次匹配的索引位置，如果没有匹配则返回-1。
+<br></p><pre>
+int result = $.indexOf(asList(1, 2, 3), 2);
+System.out.println(result);
+<br>=&gt; 1</pre><p></p>
+
+<p id="lastIndexOf"><b class="header">lastIndexOf</b> <code>$.lastIndexOf(array, value)</code>
+<br>返回value在array中最后一次匹配的索引位置，如果没有匹配则返回-1。<br></p>
+<pre>
+int result = $.indexOf(asList(1, 2, 3), 2);
+System.out.println(result);
+<br>=&gt; 4</pre><p></p>
+
+<p id="range"><b class="header">range</b> <code>$.range([start], stop, [step])
+</code><br>创建一个数组，第一个参数start为数组的起始值（如果不传默认为0），第二个参数stop为数组的结束值。第三个参数为递增的步长（如果不传则默认为1），如果步长为负数，将会被认为是负增长。和Underscore.js不同的是如果stop在start的前面，是负增长而不是零长度。
+<br></p>
+<pre>
+public static void printArr(int[] arr) {
+	for (int i = 0; i &lt; arr.length; i++) {
+		System.out.print(arr[i]+",");
+	}
+	System.out.println();
+}
+<br>
+int[] a = $.range(10);
+printArr(a);
+<br>// [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]<br>
+int[] b = $.range(1, 11);
+printArr(b);
+<br>// [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]<br>
+int[] c = $.range(0, 30, 5);
+printArr(c);
+<br>// [0, 5, 10, 15, 20, 25]<br>
+int[] d = $.range(0, -10, -1);
+printArr(d);
+<br>// [0, -1, -2, -3, -4, -5, -6, -7, -8, -9]<br>
+int[] e = $.range(0);
+printArr(e);
+<br>// []</pre><p></p>
+
+<p id="concat"><b class="header">concat</b> <code>$.concat(*arrays)
+</code><br>将任意数量的数组合并为一个数组返回
+<br></p>
+<pre>
+List&lt;Integer&gt; result = $.concat(asList(1, 2), asList(3, 4));
+System.out.println(result);
+<br>=&gt; [1, 2, 3, 4];</pre><p></p>
+
+<p id="reverse"><b class="header">reverse</b> <code>$.reverse(array)
+</code><br>返回一个反转后的数组副本
+<br></p><pre>List&lt;Integer&gt; result = $.reverse(asList(1, 2, 3));
+System.out.println(result);
+<br>=&gt; [3, 2, 1]</pre><p></p>
+<p id="join"><b class="header">join</b> <code>$.join(array, [separator])
+</code><br>将数组的各个元素使用分隔符连接后返回一个字符串，分隔符默认为一个空格。<br></p><pre>
+String result = $.join(asList(1, 2), " and ");
+System.out.println(result);
+<br>=&gt; "1 and 2"</pre><p></p>
+
+<p id="slice"><b class="header">slice</b> <code>$.slice(array, [from], [to])
+</code><br>将数据进行截取后返回. 负数的to和from将会从尾部开始计算。<br></p>
+<pre>$.slice(asList(1, 2, 3, 4), 1);<br>// [2, 3, 4]
+<br>$.slice(asList(1, 2, 3, 4), 3);<br>//; [3, 4]
+<br>$.slice(asList(1, 2, 3, 4), 2, -1);<br>// [2, 3]<br>
+$.slice(asList(1, 2, 3, 4), -3, -1);<br>// [2, 3]</pre><p></p>
+ <h2 id="Functions">函数</h2>
+
+<p id="bind"><b class="header">bind</b> <code>$.bind(function, object, [*arguments])</code>
+<br>Bind
+将一个函数绑定到结构体上，无论这个函数什么时候调用，this始终指向这个结构体，后面的参数将会填充他。
+<br></p>
+<pre>class GreetingFunction implements Function1&lt;String, String&gt; {
+    private final String name;
+    public GreetingFunction(final String name) {
+        this.name = name;
+    }
+    public String apply(final String greeting) {
+        return greeting + &quot;: &quot; + this.name;
+    }
+}
+String result = $.bind(new GreetingFunction(&quot;moe&quot;)).apply(&quot;hi&quot;);
+System.out.println(result);
+<br>=&gt; "hi: moe"</pre><p></p>
+
+<p id="memoize"><b class="header">memoize</b> 
+<code>$.memoize(function)</code><br>
+memoizes方法可以缓存某函数的计算结果。对于耗时较长的计算是很有帮助的。
+<br></p>
+<pre>class FibonacciFuncion1 extends MemoizeFunction1&lt;Integer&gt; {
+    public Integer calc(final Integer n) {
+        return n &lt; 2 ? n : apply(n - 1) + apply(n - 2);
+    }
+}
+Integer result = new FibonacciFuncion1().apply(10);
+System.out.println(result);
+// 55</pre><p></p>
+
+<p id="delay"><b class="header">delay</b> 
+<code>$.delay(function, wait, arguments)</code><br>
+延迟数毫秒后执行指定函数
+<br></p>
+<pre>// 这个怎么调用还是一个问题！
+$.delay(new Function&lt;String&gt;() {
+    public String apply() {
+        return "hi";
+    }
+}, 1000);
+<br>=&gt; "hi" // appears after one second</pre><p></p>
+
+<p id="once"><b class="header">once</b> <code>$.once(function)
+</code><br>
+创建一个只能被调用一次的函数，第一次后面的重复调用无效。适用于懒加载初始化。
+<br></p>
+<pre>
+final Integer[] counter = new Integer[] { 0 };
+Function&lt;Integer&gt; incr = new Function&lt;Integer&gt;() {
+	public Integer apply() {
+		counter[0]++;
+		System.out.println(counter[0]);
+		return counter[0];
+	}
+};
+Function&lt;Integer&gt; onceIncr = $.once(incr);
+onceIncr.apply();
+onceIncr.apply();
+<br>=&gt; counter[0] == 1</pre><p></p>
+
+<p id="debounce"><b class="header">debounce</b> 
+<code>$.debounce(function, wait)</code><br>
+不明觉厉啊！
+<br></p>
+<pre>final Integer[] counter = new Integer[] {0};
+Function&lt;Void&gt; incr = new Function&lt;Void&gt;() { public Void apply() { counter[0]++; return null; } };
+Function&lt;Void&gt; debouncedIncr = $.debounce(incr, 50);
+debouncedIncr.apply();
+debouncedIncr.apply();
+$.delay(debouncedIncr, 16);
+$.delay(new Function&lt;Void&gt;() {
+    public Void apply() {
+        System.out.println(counter[0]);
+        return null;
+    }
+}, 60);
+Thread.sleep(120);
+<br>=&gt; function argument is called only once</pre><p></p>
+
+<p id="after"><b class="header">after</b> 
+<code>$.after(count, function)</code><br>
+创建一个只有被调用了count次后才会运行的函数，如果第count &lt;= 0次调用，函数将会立即返回。
+<br></p>
+<pre>
+final List&lt;Integer&gt; notes = asList(1, 2, 3);
+final Function&lt;Integer&gt; renderNotes = $.after(notes.size(),
+    new Function&lt;Integer&gt;() { public Integer apply() {
+        return 4; } });
+final List&lt;Integer&gt; result = new ArrayList&lt;Integer&gt;();
+$.&lt;Integer&gt;each(notes, new Block&lt;Integer&gt;() {
+    public void apply(Integer item) {
+        result.add(item);
+        Integer afterResult = renderNotes.apply();
+		// 第1次调用返回null，第2次调用返回null，第3次调用返回4
+		System.out.println(afterResult);
+        if (afterResult != null) {
+            result.add(afterResult);
+        }
+    }
+});
+<br>=&gt; [1, 2, 3, 4]</pre><p></p>
+
+<p id="before"><b class="header">before</b>
+<code>$.before(count, function)</code><br>
+创建一个只有被调用了count次前才会运行的函数，如果第count &lt;= 0次调用，函数将会立即返回。
+<br></p>
+<pre>final List&lt;Integer&gt; notes = asList(1, 2, 3);
+final Function&lt;Integer&gt; renderNotes = $.before(notes.size() - 1,
+    new Function&lt;Integer&gt;() { public Integer apply() {
+        return 4; } });
+final List&lt;Integer&gt; result = new ArrayList&lt;Integer&gt;();
+$.&lt;Integer&gt;each(notes, new Block&lt;Integer&gt;() {
+    public void apply(Integer item) {
+        result.add(item);
+        Integer afterResult = renderNotes.apply();
+		// 第1次调用返回4，第2次调用返回4，第3次调用返回4
+		System.out.println(afterResult);
+        if (afterResult != null) {
+            result.add(afterResult);
+        }
+    }
+});
+System.out.println(result);  // [1, 4, 2, 4, 3, 4]
+</pre><p></p>
+
+<p id="wrap"><b class="header">wrap</b> <code>$.wrap(function, wrapper)
+</code><br>
+将第一个函数 function 封装到函数 wrapper 里面, 并把函数 function 作为第一个参数传给 wrapper. 这样可以让wrapper 在 function 运行之前和之后 执行代码, 调整参数然后附有条件地执行。
+<br></p>
+<pre>Function1&lt;String, String&gt; hello = new Function1&lt;String, String&gt;() {
+    public String apply(final String name) {
+        return &quot;hello: &quot; + name;
+    }
+};
+Function1&lt;Void, String&gt; result = $.wrap(hello, new Function1&lt;Function1&lt;String, String&gt;, String&gt;() {
+    public String apply(final Function1&lt;String, String&gt; func) {
+        return &quot;before, &quot; + func.apply(&quot;moe&quot;) + &quot;, after&quot;;
+    }
+});
+result.apply(null);
+<br>=&gt; "before, hello: moe, after"</pre><p></p>
+
+<p id="compose"><b class="header">compose</b> <code>$.compose(*functions)
+</code><br>
+返回函数集 functions 组合后的复合函数, 也就是一个函数执行完之后把返回的结果再作为参数赋给下一个函数来执行. 以此类推. 在数学里, 把函数 f(), g(), 和 h() 组合起来可以得到复合函数 f(g(h()))。
+<br></p>
+<pre>Function1&lt;String, String&gt; greet = new Function1&lt;String, String&gt;() {
+    public String apply(final String name) {
+        return &quot;hi: &quot; + name;
+    }
+};
+Function1&lt;String, String&gt; exclaim = new Function1&lt;String, String&gt;() {
+    public String apply(final String statement) {
+        return statement.toUpperCase() + &quot;!&quot;;
+    }
+};
+Function1&lt;String, String&gt; welcome = $.compose(greet, exclaim);
+String result = welcome.apply(&quot;moe&quot;);
+System.out.println(result);
+<br>=&gt; 'hi: MOE!';</pre><p></p>
+<h2 id="Objects">对象/结构函数</h2>
+
+<p id="keys"><b class="header">keys</b> <code>$.keys(object)
+</code><br>
+返回对象的所有键名组成的数组
+<br></p><pre>
+Set&lt;String&gt; result = $.keys(new LinkedHashMap&lt;String, Object&gt;() { {
+    put(&quot;one&quot;, 1); put(&quot;two&quot;, 2); put(&quot;three&quot;, 3); } });
+System.out.println(result);
+<br>=&gt; ["one", "two", "three"]</pre><p></p>
+
+<p id="values"><b class="header">values</b> <code>$.values(object)
+</code><br>返回对象的所有值组成的数组<br></p>
+<pre>
+Collection&lt;Integer&gt; result = $.values(new LinkedHashMap&lt;String, Integer&gt;() { {
+    put(&quot;one&quot;, 1); put(&quot;two&quot;, 2); put(&quot;three&quot;, 3); } });
+System.out.println(result);
+<br>=&gt; [1, 2, 3]</pre><p></p>
+
+<p id="pairs"><b class="header">pairs</b> <code>$.pairs(object)
+</code><br>将对象转换为键值对集合<br></p><pre>
+List result = $.pairs(new LinkedHashMap<String, Integer>() { {
+    put("one", 1); put("two", 2); put("three", 3); } });
+System.out.println(result);
+<br>=&gt; [(one, 1), (two, 2), (three, 3)]</pre><p></p>
+
+<p id="invert"><b class="header">invert</b> 
+<code>$.invert(object)</code><br>
+转换集合元素的位置
+<br></p><pre>
+List&lt;Tuple&lt;String, String&gt;&gt; result = $.invert(new LinkedHashMap&lt;String, String&gt;() { {
+    put(&quot;Moe&quot;, &quot;Moses&quot;); put(&quot;Larry&quot;, &quot;Louis&quot;); put(&quot;Curly&quot;, &quot;Jerome&quot;); } });
+System.out.println(result);
+<br>=&gt; [(Moses, Moe), (Louis, Larry), (Jerome, Curly)]</pre><p></p>
+
+<p id="functions"><b class="header">functions</b> <code>$.functions(object)
+</code><br>返回对象的所有函数/方法名组成的数组<br></p><pre>
+List&lt;String&gt; result = $.functions($.class);
+System.out.println(result);
+=&gt; ["all", "any", "bind", "clone", "compact", "compose" ...</pre><p></p>
+
+<p id="extend"><b class="header">extend</b> 
+<code>$.extend(destination, *sources)</code><br>
+将源对象的所有属性值拷贝到目标对象，如果目标对象中已经存在源对象中已有属性值，将会覆盖掉目标对象的属性值。注：源对象可以传递多个参数，右侧参数拥有覆盖左侧参数的权利。<br></p><pre>
+Map&lt;String, Object&gt; result = $.extend(new LinkedHashMap&lt;String, Object&gt;() { { put(&quot;name&quot;, &quot;moe&quot;); } },
+    new LinkedHashMap&lt;String, Object&gt;() { { put(&quot;age&quot;, 50); } });
+System.out.println(result);
+=&gt; {name=moe, age=50}</pre><p></p>
+
+<p id="pick"><b class="header">pick</b> 
+<code>$.pick(object, *keys)
+</code><br>
+返回对象的副本，但是只会保留白名单中的对象属性。
+<br></p>
+<pre>
+List&lt;Tuple&lt;String, Object&gt;&gt; result = $.pick(
+    new LinkedHashMap&lt;String, Object&gt;() { { put(&quot;name&quot;, &quot;moe&quot;); put(&quot;age&quot;, 50); put(&quot;userid&quot;, &quot;moe1&quot;); } },
+    &quot;name&quot;, &quot;age&quot;
+);
+System.out.println(result);
+<br>=&gt; [(name, moe), (age, 50)]</pre><p></p>
+
+<p id="omit"><b class="header">omit</b> <code>$.omit(object, *keys)
+</code><br>返回对象的副本，但是要去除黑名单中的对象属性。<br></p>
+<pre>
+List&lt;Tuple&lt;String, Object&gt;&gt; result = $.omit(
+    new LinkedHashMap&lt;String, Object&gt;() { { put(&quot;name&quot;, &quot;moe&quot;); put(&quot;age&quot;, 50); put(&quot;userid&quot;, &quot;moe1&quot;); } },
+    &quot;userid&quot;
+);
+System.out.println(result);
+<br>=&gt; [(name, moe), (age, 50)]</pre><p></p>
+
+<p id="defaults"><b class="header">defaults</b> <code>$.defaults(object, *defaults)</code>
+<br>将defaults对象中的属性值填充到目标对象中，如果目标对象中已经存在defaults对象中已有属性值，将不会覆盖掉目标对象的属性值。注：defaults对象可以传递多个参数，右侧参数没有覆盖左侧参数的权利。
+<br></p>
+<pre>Map&lt;String, String&gt; iceCream = new LinkedHashMap&lt;String, String&gt;() { { put(&quot;flavor&quot;, &quot;chocolate&quot;); } };
+Map&lt;String, String&gt; result = $.defaults(iceCream, new LinkedHashMap&lt;String, String&gt;() { {
+    put(&quot;flavor&quot;, &quot;vanilla&quot;); put(&quot;sprinkles&quot;, &quot;lots&quot;); } });
+System.out.println(result);
+<br>=&gt; {flavor=chocolate, sprinkles=lots}</pre><p></p>
+
+<p id="clone"><b class="header">clone</b> <code>$.clone(object)
+</code><br>返回对象的浅拷贝，任何嵌套结构或对象都是通过引用拷贝，而不是复制。<br></p>
+<pre>
+Object result = $.clone(new LinkedHashMap&lt;String, String&gt;() { {
+    put(&quot;name&quot;, &quot;moe&quot;); } });
+System.out.println(result);
+<br>=&gt; {name=moe}</pre><p></p>
+
+<p id="has"><b class="header">has</b> <code>$.has(object, key)
+</code><br>判断对象是否含有给定的键<br></p><pre>
+boolean result = $.has(new LinkedHashMap&lt;String, Integer&gt;() { {
+    put(&quot;a&quot;, 1); put(&quot;b&quot;, 2); put(&quot;c&quot;, 3); } }, &quot;b&quot;);
+System.out.println(result);
+<br>=&gt; true</pre><p></p>
+
+<p id="isEqual"><b class="header">isEqual</b> <code>$.isEqual(object, other)</code>
+<br>深度比较2个对象是否相等<br></p>
+<pre>Map&lt;String, Object&gt; stooge = new LinkedHashMap&lt;String, Object&gt;() { {
+    put(&quot;name&quot;, &quot;moe&quot;); put(&quot;luckyNumbers&quot;, asList(13, 27, 34)); } };
+Map&lt;String, Object&gt; clone = new LinkedHashMap&lt;String, Object&gt;() { {
+    put(&quot;name&quot;, &quot;moe&quot;); put(&quot;luckyNumbers&quot;, asList(13, 27, 34)); } };
+System.out.println(stooge == clone);          // false
+System.out.println($.isEqual(stooge, clone)); // true
+<br>=&gt; stooge == clone // false
+=&gt; $.isEqual(stooge, clone); // true</pre><p></p>
+
+<p id="isEmpty"><b class="header">isEmpty</b> <code>$.isEmpty(object)
+</code><br>检测某个对象是否含有某个值<br></p>
+<pre>
+System.out.println($.isEmpty(asList(1, 2, 3, 4)));        // false
+System.out.println($.isEmpty(asList(0, 2, 3, 4)));        // false
+System.out.println($.isEmpty(asList("", 2, 3, 4)));       // false
+System.out.println($.isEmpty(new ArrayList&lt;String&gt;()));   // true
+</pre><p></p>
+
+<p id="isArray"><b class="header">isArray</b> <code>$.isArray(object)</code>
+<br>如果参数为数组则返回true。<br></p><pre>
+System.out.println($.isArray("string"));   // false
+System.out.println($.isArray(new int[] { 1, 2, 3, 4, 5 }));  // true
+</pre><p></p>
+
+<p id="isObject"><b class="header">isObject</b> <code>$.isObject(object)</code>
+<br>如果参数为对象则返回true。<br></p><pre>
+System.out.println($.isObject(new LinkedHashMap<String, String>()));  // true
+System.out.println($.isObject(null));       // false
+</pre><p></p>
+
+<p id="isFunction"><b class="header">isFunction</b> <code>$.isFunction(object)</code>
+<br>如果参数为函数则返回true。<br></p>
+<pre>
+boolean result = $.isFunction(new Function1&lt;String, Integer&gt;() {
+	public Integer apply(final String arg) {
+		return null;
+	}
+});
+System.out.println(result);  //true
+</pre><p></p>
+
+<p id="isString"><b class="header">isString</b> <code>$.isString(object)
+</code><br>如果参数为字符串则返回true。使用Java的类型判断。<br></p><pre>
+System.out.println($.isString("moe"));   // true
+System.out.println($.isString(1));       // false
+</pre><p></p>
+
+<p id="isNumber"><b class="header">isNumber</b> <code>$.isNumber(object)
+</code><br>如果参数为数字则返回true。<br></p><pre>
+System.out.println($.isNumber(1));               //true
+System.out.println($.isNumber(new Integer(1)));  //true
+</pre><p></p>
+
+<p id="isBoolean"><b class="header">isBoolean</b> <code>$.isBoolean(object)
+</code><br>如果参数为布尔值则返回true。<br></p><pre>
+System.out.println($.isBoolean(false));<br>// true</pre><p></p>
+
+<p id="isDate"><b class="header">isDate</b> <code>$.isDate(object)
+</code><br>如果参数为DateTime对象则返回true。<br></p><pre>
+System.out.println($.isDate(new java.util.Date()));<br>// true</pre><p></p>
+ <h2
+id="Utilities">实用功能（Utility Functions）</h2>
+
+<p id="times"><b class="header">times</b> <code>$.times(n, iterator)
+</code><br>调用给定的迭代 函数 n 次<br></p><pre>
+final List&lt;Integer&gt; result = new ArrayList&lt;Integer&gt;();
+$.times(3, new Function&lt;Integer&gt;() {
+    public Integer apply() {
+        result.add(1);
+        return null;
+    }
+});
+System.out.println(result);
+<br>=&gt; [1, 1, 1]
+</pre><p></p>
+
+<p id="random"><b class="header">random</b> <code>$.random(min, max)
+</code><br>返回[min, max]之间的整型，包含边界。如果只传入一个参数n，则返回[0-n]。<br></p><pre>
+System.out.println($.random(0, 100));
+<br>=&gt; 42</pre><p></p>
+
+<p id="mixin"><b class="header">mixin</b> <code>$.mixin(object)
+</code><br>通过自己的函数函数扩展Underscore。<br></p>
+<pre>
+$.mixin(&quot;capitalize&quot;, new Function1&lt;String, String&gt;() {
+    public String apply(final String string) {
+        return String.valueOf(string.charAt(0)).toUpperCase() + string.substring(1).toLowerCase();
+    }
+});
+Object result = new $("fabio").call("capitalize").get();
+System.out.println(result);
+<br>=&gt; "Fabio"</pre><p></p>
+
+<p id="uniqueId"><b class="header">uniqueId</b> <code>$.uniqueId(prefix)
+</code><br>
+返回当前Underscore实例的标识id，如果存在 prefix 参数则作使用prefix_作为前缀。
+<br></p><pre>System.out.println($.uniqueId("c"));<br><br>=&gt; c1</pre><p></p>
+
+<p id="uniquePassword"><b class="header">uniquePassword</b> <code>$.uniquePassword()
+</code><br>产生一个随机文本字符串，介于8-15个字符长度。
+<br></p><pre>System.out.println($.uniquePassword());<br><br>=&gt; FKV276qgb-&amp;</pre><p></p>
+
+<p id="escape"><b class="header">escape</b> <code>$.escape(input)
+</code><br>将HTML的字符串中的&amp; &lt;, &gt;, 和 " 转义<br></p><pre>
+String result = $.escape("Curly, Larry &amp; Moe");
+System.out.println(result);
+<br>=&gt; &quot;Curly, Larry &amp;amp; Moe&quot;</pre><p></p>
+
+<p id="result"><b class="header">result</b> <code>$.result(object, property)
+</code><br>如果对象的有函数属性，就调用这个函数，否则就返回这个属性。<br></p>
+<pre>Map&lt;String, Object&gt; object = new LinkedHashMap&lt;String, Object&gt;() { {
+    put(&quot;cheese&quot;, &quot;crumpets&quot;);
+    put(&quot;stuff&quot;, new Function&lt;String&gt;() { public String apply() { return &quot;nonsense&quot;; } });
+} };
+
+Object result = $.result(object.entrySet(), new Predicate&lt;Map.Entry&lt;String, Object&gt;&gt;() {
+    public Boolean apply(Map.Entry&lt;String, Object&gt; item) {
+        return item.getKey().equals(&quot;cheese&quot;);
+    }
+});
+System.out.println(result);
+<br>// "crumpets"<br>Object result2 = $.result(object.entrySet(), new Predicate&lt;Map.Entry&lt;String, Object&gt;&gt;() {
+    public Boolean apply(Map.Entry&lt;String, Object&gt; item) {
+        return item.getKey().equals(&quot;stuff&quot;);
+    }
+});
+System.out.println(result2);
+<br>// "nonsense"</pre><p></p>
+<p id="times"><b class="header">times</b> <code>$.times(n, iterator)
+</code><br>调用给定的迭代 函数 n 次。
+<br></p><pre>final List&lt;Integer&gt; result = new ArrayList&lt;Integer&gt;();
+$.times(3, new Function&lt;Integer&gt;() {
+    public Integer apply() {
+        result.add(1);
+        return null;
+    }
+});
+System.out.println(result);
+<br>=&gt; [1, 1, 1]
+</pre><p></p>
+
+ <h2
+id="Chaining">链式语法（Chaining）</h2>
+<p>
+你即可以通过面向对象的方式也可以通过对象函数调用的方式使用Underscore-java。下面这两种方式均可以得到返回值。
+</p>
+<pre>$.map(asList(1, 2, 3), new Function1&lt;Integer, Integer&gt;() {
+    public Integer apply(Integer item) {
+        return item * 2;
+    }
+});
+new $(asList(1, 2, 3)).map(new Function1&lt;Integer, Integer&gt;() {
+    public Integer apply(Integer item) {
+        return item * 2;
+    }
+});</pre>
+<p>
+        调用 <tt>chain</tt> 将会返回包装对象，当你需要完成计算的时候调用
+        <tt>item</tt> or <tt>value</tt> 去得到最终值。下面有一个链式方法配合使用<b>map/flatten/reduce</b>可以计算出一首歌中每个单词出现的次数
+</p>
+<pre>final List&lt;Map&lt;String, Object&gt;&gt; lyrics = new ArrayList&lt;Map&lt;String, Object&gt;&gt;() { {
+    add(new LinkedHashMap&lt;String, Object&gt;() { {
+        put(&quot;line&quot;, 1); put(&quot;words&quot;, &quot;I'm a lumberjack and I'm okay&quot;); } });
+    add(new LinkedHashMap&lt;String, Object&gt;() { {
+        put(&quot;line&quot;, 2); put(&quot;words&quot;, &quot;I sleep all night and I work all day&quot;); } });
+    add(new LinkedHashMap&lt;String, Object&gt;() { {
+        put(&quot;line&quot;, 3); put(&quot;words&quot;, &quot;He's a lumberjack and he's okay&quot;); } });
+    add(new LinkedHashMap&lt;String, Object&gt;() { {
+        put(&quot;line&quot;, 4); put(&quot;words&quot;, &quot;He sleeps all night and he works all day&quot;); } });
+} };
+final String result = $.chain(lyrics)
+    .map(
+        new Function1&lt;Map&lt;String, Object&gt;, List&lt;String&gt;&gt;() {
+        public List&lt;String&gt; apply(Map&lt;String, Object&gt; item) {
+            return asList(String.valueOf(item.get(&quot;words&quot;)).split(&quot; &quot;));
+        }
+    })
+    .flatten()
+    .reduce(
+        new FunctionAccum&lt;Map&lt;String, Integer&gt;, String&gt;() {
+        public Map&lt;String, Integer&gt; apply(Map&lt;String, Integer&gt; accum, String item) {
+            if (accum.get(item) == null) {
+                accum.put(item, 1);
+            } else {
+                accum.put(item, accum.get(item) + 1);
+            }
+            return accum;
+        }
+    },
+    new LinkedHashMap&lt;String, Integer&gt;()
+    )
+    .item();
+
+=&gt; {lumberjack: 2, all: 4, night: 2 ... }</pre>
+<p id="chain">
+        <b class="header">chain</b><code>$.chain(obj)</code>
+        <br>
+		返回一个包装器对象，每次调用其方法将会返回对象自身，直到调用<tt>item</tt> 或 <tt>value</tt>时才会返回调用结果。
+</p>
+<pre>final List&lt;Map&lt;String, Object&gt;&gt; stooges = new ArrayList&lt;Map&lt;String, Object&gt;&gt;() { {
+    add(new LinkedHashMap&lt;String, Object&gt;() { { put(&quot;name&quot;, &quot;curly&quot;); put(&quot;age&quot;, 25); } });
+    add(new LinkedHashMap&lt;String, Object&gt;() { { put(&quot;name&quot;, &quot;moe&quot;); put(&quot;age&quot;, 21); } });
+    add(new LinkedHashMap&lt;String, Object&gt;() { { put(&quot;name&quot;, &quot;larry&quot;); put(&quot;age&quot;, 23); } });
+} };
+final String youngest = $.chain(stooges)
+    .sortBy(
+        new Function1&lt;Map&lt;String, Object&gt;, Integer&gt;() {
+        public Integer apply(Map&lt;String, Object&gt; item) {
+            return (Integer) item.get(&quot;age&quot;);
+        }
+    })
+    .map(
+        new Function1&lt;Map&lt;String, Object&gt;, String&gt;() {
+        public String apply(Map&lt;String, Object&gt; item) {
+            return item.get(&quot;name&quot;) + &quot; is &quot; + item.get(&quot;age&quot;);
+        }
+    })
+    .first().item();
+
+=&gt; "moe is 21"
+</pre>
+<p id="value">
+        <b class="header">value</b><code>$.chain(obj).value()</code>
+        <br>
+   获取封装对象的最终值。
+</p>
+<pre>$.chain(Arrays.asList(1, 2, 3)).value();
+=&gt; [1, 2, 3]
+</pre>
+ <p
+id="changelog">
+ </p><h2>更新日志</h2>
+ <p>
+ <b class="header">1.12</b> --
+<small><i>Mar 1st, 2016</i></small><br>
+ </p>
+ <ul>
+ <li>Renamed trimLeft, trimRight, padLeft, padRight to the trimStart, trimEnd, padStart, padLeft in string and lodash plugins</li>
+ <li>Improved once(), after() and before() methods. They returned last stored result for now</li>
+ </ul>
+ <p>
+ </p><p>
+ <p>
+ <b class="header">1.11</b> --
+<small><i>Feb 4th, 2016</i></small><br>
+ </p>
+ <ul>
+ <li>Added support for the toMap() method with list of tuples</li>
+ <li>Added compact() support for the chain()</li>
+ </ul>
+ <p>
+ </p><p>
+ <p>
+ <b class="header">1.10</b> --
+<small><i>Jan 1st, 2016</i></small><br>
+ </p>
+ <ul>
+ <li>Removed redundant type casting</li>
+ <li>Added support for the toJsonJavaString() method in string plugin</li>
+ <li>Added support for the fromXml() method in string and lodash plugins</li>
+ <li>Fixed max password length in uniquePassword() method</li>
+ <li>Added examples for methods intersection and xor, snakeCase, chaining, fromXml and fromJson</li>
+ </ul>
+ <p>
+ </p><p>
+ <b class="header">1.9</b> --
+<small><i>Dec 1st, 2015</i></small><br>
+ </p>
+ <ul>
+ <li>Improved toJson() method in string and lodash plugins</li>
+ <li>Added support for the uniquePassword() to generate 8-15 length passwords</li>
+ <li>Improved return types in chain() methods</li>
+ <li>Improved escape/unescape methods</li>
+ <li>Added java8 unit test examples</li>
+ </ul>
+ <p>
+ </p><p>
+ <b class="header">1.8</b> --
+<small><i>Nov 1st, 2015</i></small><br>
+ </p>
+ <ul>
+ <li>Added methods fromNullable(), or() and orNull() for the Optional class</li>
+ <li>Added support for the toXml() method in string and lodash plugins</li>
+ <li>Fixed unicode parser in string and lodash plugins</li>
+ <li>Added support for the methods upperFirst and lowerFirst in string and lodash plugins</li>
+ <li>Fixed compiler warnings</li>
+ </ul>
+ <p>
+ </p><p>
+ <b class="header">1.7</b> --
+<small><i>Oct 1st, 2015</i></small><br>
+ </p>
+ <ul>
+ <li>Added support for the range() methods in chain()</li>
+ <li>Added support for the method sum(array, function) in math and lodash plugins</li>
+ <li>Added chain methods in lodash, math and string plugins</li>
+ <li>Added support for better formatting in toJson() method in string and lodash plugins</li>
+ <li>Added support for the cyrillic characters in words() method in string and lodash plugins</li>
+ </ul>
+ <p>
+ </p><p>
+ <b class="header">1.6</b> --
+<small><i>Sep 1st, 2015</i></small><br>
+ </p>
+ <ul>
+ <li>Added support for the method chunk(array, size)</li>
+ <li>Added support for the method name in where() and findWhere() methods</li>
+ <li>Added support for the methods toJson() and fromJson() in lodash and string plugins</li>
+ <li>Added support for the object and chain methods invoke(), pluck(), where(), findWhere(), max() and min()</li>
+ <li>Added read class data by method name into pluck()</li>
+ </ul>
+ <p>
+ </p><p>
+ <b class="header">1.5</b> --
+<small><i>Aug 1st, 2015</i></small><br>
+ </p>
+ <ul>
+ <li>Added toMap(), value(),
+chain(), eachRight(), and forEachRight()</li>
+ <li>Added chain and object methods support for the size() and isEmpty()</li>
+ <li>Fixed type for sort() method</li>
+ <li>Added support for the chain methods every() and some()</li>
+ <li>Added chain methods support groupBy(), indexBy() and countBy()</li>
+ <li>Added support for the diferrence(arrays) and union(arrays) methods</li>
+ <li>Improve equals and hashCode for Optional</li>
+ </ul>
+ <p>
+ </p><p>
+<b class="header">1.4</b> -- <small><i>July 1st, 2015</i></small><br>
+ </p>
+<ul>
+ <li>Fixed slice(0, N) method</li>
+ <li>List generators available for plugins</li>
+ <li>Added parameters check for first, last, rest and initial methods</li>
+ <li>Introduced underscore-lodash plugin</li>
+ </ul>
+ <p>
+ <b
+class="header">1.3</b> -- <small><i>June 1st, 2015</i></small><br>
+ </p>
+<ul>
+ <li>Main class was renamed from _ to the $.</li>
+ <li>Methods were reordered</li>
+ <li>Unit tests were divided by groups</li>
+ <li>New methods were added</li>
+ <li>Math plugin was added</li>
+</ul>
+ <p>
+ <b class="header">1.2</b> -- <small><i>May 1st, 2015</i></small><br>
+ </p>
+ <ul>
+ <li>Added methods initial, rest, last to the _.chain().</li>
+ </ul>
+ <p>
+<b class="header">1.1</b> -- <small><i>April 4th, 2015</i></small><br>
+ </p>
+<ul>
+ <li>Add support for the methods filter and reject to the chain object</li>
+ </ul>
+ <p>
+ <b class="header">1.0</b> -- <small><i>December 27, 2014</i></small><br>
+ </p>
+ <ul>
+ <li>
+ Main functionality was implemented
+</li>
+ </ul>
+ <p></p>
+ </div>
+</body></html>
