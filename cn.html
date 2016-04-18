@@ -661,8 +661,9 @@ System.out.println(result);    // [3, 2, 5]
 
 <p id="toArray"><b class="header">toArray</b> <code>$.toArray(collection)
 </code><br>把集合转换成一个数组<br>
-</p><pre>// 不知道怎样接收toArray的返回值
-System.out.println($.&lt;Integer&gt;toArray(asList(1, 2, 3, 4)));<br>=&gt; [1, 2, 3, 4]</pre><p></p>
+</p><pre>// 用Object[]接收
+Object[] object = $.&lt;Integer&gt;toArray(asList(1, 2, 3, 4));
+System.out.println(object);<br>=&gt; [1, 2, 3, 4]</pre><p></p>
 
 <p id="toMap"><b class="header">toMap</b> <code>$.toMap(collection)</code><br>把集合转换成一个map对象<br></p><pre>
 Map&lt;String, String&gt; result = $.toMap((new LinkedHashMap&lt;String, String&gt;() { {
